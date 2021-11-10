@@ -1,0 +1,1 @@
+{"level":"info","message":"::1 - - [10/Nov/2021:22:42:10 +0000] \"GET /person/88 HTTP/1.1\" 404 46 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36\"\n"}
