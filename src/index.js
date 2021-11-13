@@ -1,16 +1,22 @@
 require('dotenv').config();
+const config = require('config');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const logger = require('./config/logger');
+const logger = require('../config/logger');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const port = process.env.PORT || 3000;
 
 // MongoDB connection
+if (!config.has('database')) {
+    logger.error('No db config found');
+    process.exit();
+}
+const {username, password, host} = config.get('database');
 mongoose.connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}`,
+    `mongodb+srv://${username}:${password}@${host}`,
     {useNewUrlParser: true,
     useUnifiedTopology: true}
 ).then(() => logger.info('MongoDB connection has been established successful'))
@@ -25,7 +31,7 @@ app.use(morgan('combined', {stream: logger.stream}));
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
-app.use('/person', require('./controllers/person/route'));
+app.use('/person', require('./controllers/person/person.routes'));
 
 app.use((err, req, res, next) => {
     res.status(err.statusCode);
