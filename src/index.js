@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -5,11 +6,11 @@ const morgan = require('morgan');
 const logger = require('./config/logger');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // MongoDB connection
 mongoose.connect(
-    'mongodb+srv://NodeUser:UvbyMewbVPwHC6KM@cluster0.pkh4u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}`,
     {useNewUrlParser: true,
     useUnifiedTopology: true}
 ).then(() => logger.info('MongoDB connection has been established successful'))
