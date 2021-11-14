@@ -6,7 +6,7 @@ const PersonSchema = mongoose.Schema({
     email: String
 },
 {
-    timeStamp: true
+    timeStamps: true
 });
 
 // PersonSchema alapu modell Person neven
