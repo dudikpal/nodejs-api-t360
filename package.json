@@ -20,6 +20,7 @@
     "morgan": "1.10.0",
     "node": "^17.0.1",
     "nodemon": "^2.0.15",
+    "supertest": "^6.1.6",
     "winston": "3.3.3"
   },
   "devDependencies": {

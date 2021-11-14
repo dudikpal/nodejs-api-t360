@@ -1,0 +1,7 @@
+{
+  "database": {
+    "username": "NodeUser",
+    "password": "UvbyMewbVPwHC6KM",
+    "host": "cluster0.pkh4u.mongodb.net/JestDB?retryWrites=true&w=majority"
+  }
+}
